@@ -1,4 +1,4 @@
-# react-dotenv
+# react-dotenv 🎛
 
 Load environment variables dynamically for your React applications created with CRA (Create-React-App).
 
@@ -20,7 +20,8 @@ Open your project's `package.json` file and:
 
 ### Example
 
-```json
+**package.json**:
+```js
 {
   "name": "my-react-app",
   "version": "0.1.0",
