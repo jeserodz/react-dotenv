@@ -1,0 +1,22 @@
+{
+  "name": "react-dotenv",
+  "version": "0.1.0",
+  "description": "",
+  "module": "./src/lib.js",
+  "bin": {
+    "react-dotenv": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jese",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
+    "prettier": "^2.1.2"
+  },
+  "types": "./types/lib.d.ts"
+}
