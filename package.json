@@ -1,7 +1,9 @@
 {
   "name": "react-dotenv",
   "version": "0.1.1",
-  "description": "",
+  "description": "Load environment variables dynamically for your React applications created with CRA (Create-React-App).",
+  "author": "Jese",
+  "license": "MIT",
   "module": "./src/lib.js",
   "bin": {
     "react-dotenv": "./src/cli.js"
@@ -9,14 +11,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Jese",
-  "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
     "prettier": "^2.1.2"
   },
-  "types": "./types/lib.d.ts"
+  "types": "./types/lib.d.ts",
+  "keywords": [
+    "react",
+    "dotenv",
+    "env",
+    "environment",
+    "variables",
+    "create-react-app"
+  ]
 }
