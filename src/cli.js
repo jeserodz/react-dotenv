@@ -12,7 +12,8 @@ const pick = require("lodash/pick");
 const appPackage = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../package.json")));
 
 /** Load app's .env file */
-dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+const enviroment = process.APP_ENV ?? '.' + process.APP_ENV
+dotenv.config({ path: path.resolve(__dirname, "../../../.env" + enviroment) });
 
 /**
  * Read environment variables whitelist
