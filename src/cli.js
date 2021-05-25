@@ -12,7 +12,7 @@ const pick = require("lodash/pick");
 const appPackage = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../package.json")));
 
 /** Load app's .env file */
-const enviroment = process.APP_ENV ?? '.' + process.APP_ENV
+const enviroment = process.env.APP_ENV !== undefined ? '.' + process.env.APP_ENV : '';
 dotenv.config({ path: path.resolve(__dirname, "../../../.env" + enviroment) });
 
 /**
