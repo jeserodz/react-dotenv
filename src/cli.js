@@ -21,16 +21,18 @@ dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
 const whitelist = get(appPackage, "react-dotenv.whitelist", []);
 
 /**
- * Check for custom homepage (basepath)
- * More Info: https://create-react-app.dev/docs/deployment/#building-for-relative-paths
- */
-const homepage = removeTrailingSlashes(get(appPackage, "homepage", "."));
-
-/**
  * Remove all environment variables
  * not included in the whitelist
  */
 const env = whitelist.length ? pick(process.env, whitelist) : process.env;
+
+/**
+ * Check for custom homepage (basepath)
+ * More Info: https://create-react-app.dev/docs/deployment/#building-for-relative-paths
+ */
+const homepage = get(appPackage, "homepage", "/");
+
+const baseUrl = removeTrailingSlashes(env.PUBLIC_URL || env.REACT_APP_BASE_URL || homepage);
 
 const envFile = `window.env = ${JSON.stringify(env, null, 2)};`;
 
@@ -64,18 +66,18 @@ function patchIndexHtml(html) {
   let $ = cheerio.load(html);
 
   if ($("script#react-dotenv").length) {
-    $("script#react-dotenv").attr("src", `${homepage}/env.js`);
+    $("script#react-dotenv").attr("src", `${baseUrl}/env.js`);
   } else {
-    $("head").append(`\t<script id="react-dotenv" src="${homepage}/env.js"></script>\n\t`);
+    $("head").append(`\t<script id="react-dotenv" src="${baseUrl}/env.js"></script>\n\t`);
   }
 
   return prettier.format($.html(), { parser: "html" });
 }
 
 function removeTrailingSlashes(url) {
-  let result = url
+  let result = url;
   while (result.length && result[result.length-1] === '/') {
-    result=result.slice(0, -1)
+    result=result.slice(0, -1);
   }
-  return result
+  return result;
 }
