@@ -24,7 +24,7 @@ const whitelist = get(appPackage, "react-dotenv.whitelist", []);
  * Check for custom homepage (basepath)
  * More Info: https://create-react-app.dev/docs/deployment/#building-for-relative-paths
  */
-const homepage = get(appPackage, "homepage", ".");
+const homepage = removeTrailingSlashes(get(appPackage, "homepage", "."));
 
 /**
  * Remove all environment variables
@@ -70,4 +70,12 @@ function patchIndexHtml(html) {
   }
 
   return prettier.format($.html(), { parser: "html" });
+}
+
+function removeTrailingSlashes(url) {
+  let result = url
+  while (result.length && result[result.length-1] === '/') {
+    result=result.slice(0, -1)
+  }
+  return result
 }
